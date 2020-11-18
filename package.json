@@ -19,7 +19,14 @@
     "url": "https://github.com/su37josephxia/mini-element/issues"
   },
   "homepage": "https://github.com/su37josephxia/mini-element#readme",
-  
+  "gitHooks": {
+    "pre-commit": "lint-staged",
+    "commit-msg": "node scripts/verifyCommit.js",
+    "pre-push": "npm run test"
+  },
+  "lint-staged": {
+    "*.{js,vue}": "eslint"
+  },
   "dependencies": {
     "@babel/plugin-proposal-optional-chaining": "^7.12.1",
     "@babel/preset-env": "^7.12.1",
