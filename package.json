@@ -6,8 +6,7 @@
   "scripts": {
     "test": "jest --runInBand",
     "build:next": "rollup -c",
-    "build:theme": "gulp build --gulpfile packages/theme-chalk/gulpfile.js",
-    "build:cp": " cp-cli packages/theme-chalk/lib lib/theme-chalk"
+    "build:theme": "gulp build --gulpfile packages/theme-chalk/gulpfile.js && cp-cli packages/theme-chalk/lib lib/theme-chalk"
   },
   "repository": {
     "type": "git",
