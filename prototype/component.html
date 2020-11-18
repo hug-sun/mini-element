@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="/node_modules/vue/dist/vue.global.js"></script>
+    <script src="/dist/element3-ui.global.js"></script>
+    <link href="/lib/theme-chalk/index.css" rel="stylesheet" />
+    <style></style>
+  </head>
+
+  <body>
+    <div id="app"></div>
+    <script>
+      const { createApp, reactive, computed, watchEffect } = Vue;
+
+      const MyButton = {
+        name: "MyButton",
+        data: function () {
+          return {
+            count: 0,
+          };
+        },
+        template:
+          '<button v-on:click="count++">You clicked me {{ count }} times.</button>',
+      };
+
+      // 添加插件
+      MyButton.install = (app) => app.component("MyButton", MyButton);
+
+      // 组件库
+      const Element = {
+          MyButton,
+          install: app => {
+              app.use(MyButton)
+          }
+      }
+
+      const MyComponent = {
+        template: `
+                <my-button />
+            `,
+      };
+
+      createApp(MyComponent)
+        // .use(MyButton)
+        .use(Element)
+        .mount("#app");
+    </script>
+  </body>
+</html>
