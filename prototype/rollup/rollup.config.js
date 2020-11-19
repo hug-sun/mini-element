@@ -1,32 +1,57 @@
+const vuePlugin = require("../../rollup-plugin-vue/index");
+import babel from "@rollup/plugin-babel";
+// import vuePlugin from "rollup-plugin-vue";
 const es = {
   input: "src/entry.js",
   output: {
     file: "dist/index.js",
     name: "Element",
-    format: "umd",
+    format: "iife",
+    globals: {
+      vue: "Vue",
+    },
   },
+  external: ["vue"],
+  plugins: [
+    babel(),
+    vuePlugin({
+      css: true,
+    }),
+  ],
 };
 
-import babel from "@rollup/plugin-babel";
-import { terser } from 'rollup-plugin-terser'
+import { terser } from "rollup-plugin-terser";
 const minEs = {
   input: "src/entry.js",
+  external: ["vue"],
   output: {
     file: "dist/index.min.js",
     name: "Element",
     format: "umd",
+
   },
-  plugins: [terser()],
+  plugins: [
+    vuePlugin({
+      css: true,
+    }),
+    terser(),
+  ],
 };
 
 const cjs = {
   input: "src/entry.js",
+  external: ["vue"],
   output: {
     file: "dist/index.cjs.js",
     name: "Element",
     format: "cjs",
   },
-  plugins: [babel()],
+  plugins: [
+    vuePlugin({
+      css: true,
+    }),
+    babel(),
+  ],
 };
 
-export default [es, minEs, cjs];
+export default [es];
