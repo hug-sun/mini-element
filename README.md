@@ -3,6 +3,8 @@
 </p>
 
 [![Build Status](https://travis-ci.com/su37josephxia/mini-element.svg?branch=main)](https://travis-ci.com/su37josephxia/mini-element)
+<a href="LICENSE">
+<img src="https://img.shields.io/badge/License-MIT-yellow.svg">
+</a>
 
 # mini-element
-
