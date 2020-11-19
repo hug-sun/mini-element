@@ -23,7 +23,8 @@
     "hooks": {
       "pre-commit": "npm run lint",
       "commit-msg": "node scripts/verifyCommit.js",
-      "pre-push": "npm run test"
+      "pre-push": "npm run test",
+      "codecov": "codecov"
     }
   },
   "dependencies": {
@@ -44,6 +45,7 @@
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "babel-plugin-syntax-jsx": "^6.18.0",
     "babel-preset-env": "^1.7.0",
+    "codecov": "^3.8.1",
     "cp-cli": "^2.0.0",
     "eslint": "^7.13.0",
     "eslint-formatter-pretty": "^4.0.0",
