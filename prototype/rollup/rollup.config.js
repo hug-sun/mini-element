@@ -28,9 +28,9 @@ const minEs = {
     file: "dist/index.min.js",
     name: "Element",
     format: "umd",
-
   },
   plugins: [
+    babel(),
     vuePlugin({
       css: true,
     }),
@@ -47,11 +47,11 @@ const cjs = {
     format: "cjs",
   },
   plugins: [
+    babel(),
     vuePlugin({
       css: true,
     }),
-    babel(),
   ],
 };
 
-export default [es];
+export default [es, minEs, cjs];
