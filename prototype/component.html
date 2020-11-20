@@ -15,7 +15,6 @@
     <div id="app"></div>
     <script>
       const { createApp, reactive, computed, watchEffect } = Vue;
-
       const MyButton = {
         name: "MyButton",
         data: function () {
@@ -23,8 +22,7 @@
             count: 0,
           };
         },
-        template:
-          '<button v-on:click="count++">You clicked me {{ count }} times.</button>',
+        template: '<button v-on:click="count++">Mybutton {{count}}</button>',
       };
 
       // 添加插件
@@ -32,22 +30,17 @@
 
       // 组件库
       const Element = {
-          MyButton,
-          install: app => {
-              app.use(MyButton)
-          }
-      }
-
-      const MyComponent = {
-        template: `
-                <my-button />
-            `,
+        MyButton,
+        install: (app) => {
+          app.use(Mybutton);
+        },
       };
 
-      createApp(MyComponent)
-        // .use(MyButton)
-        .use(Element)
-        .mount("#app");
+      const MyCom = {
+        template: `<my-button />`,
+      };
+
+      createApp(MyCom).use(MyButton).mount("#app");
     </script>
   </body>
 </html>
