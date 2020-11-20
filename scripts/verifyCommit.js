@@ -1,18 +1,18 @@
 // Invoked on the commit-msg git hook by yorkie.
 
-const chalk = require('chalk')
-const msgPath = process.env.HUSKY_GIT_PARAMS
-console.log('msgPath',msgPath)
-const msg = require('fs').readFileSync(msgPath, 'utf-8').trim()
+const chalk = require("chalk");
+const msgPath = process.env.HUSKY_GIT_PARAMS;
+console.log("msgPath", msgPath);
+const msg = require("fs").readFileSync(msgPath, "utf-8").trim();
 
-const commitRE = /^(revert: )?(feat|fix|docs|dx|style|refactor|perf|test|workflow|build|ci|chore|types|wip|release)(\(.+\))?(.{1,10})?: .{1,50}/
-const mergeRe = /^(Merge pull request|Merge branch)/
+const commitRE = /^(revert: )?(feat|fix|docs|dx|style|refactor|perf|test|workflow|build|ci|chore|types|wip|release)(\(.+\))?(.{1,10})?: .{1,50}/;
+const mergeRe = /^(Merge pull request|Merge branch)/;
 
 if (!commitRE.test(msg)) {
   if (!mergeRe.test(msg)) {
-    console.log(msg)
+    console.log(msg);
     console.error(
-      `  ${chalk.bgRed.white(' ERROR ')} ${chalk.red(
+      `  ${chalk.bgRed.white(" ERROR ")} ${chalk.red(
         `invalid commit message format.`
       )}\n\n` +
         chalk.red(
@@ -25,7 +25,7 @@ if (!commitRE.test(msg)) {
         chalk.red(
           `  See https://github.com/vuejs/vue-next/blob/master/.github/commit-convention.md for more details.\n`
         )
-    )
-    process.exit(1)
+    );
+    process.exit(1);
   }
 }
